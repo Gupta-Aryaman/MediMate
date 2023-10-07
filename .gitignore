@@ -19,3 +19,6 @@ app/.env.production.local
 app/npm-debug.log*
 app/yarn-debug.log*
 app/yarn-error.log*
+
+app/client/node_modules
+app/server/node_modules
