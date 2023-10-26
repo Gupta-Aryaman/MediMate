@@ -2,7 +2,7 @@
 app/node_modules
 app/.pnp
 app/.pnp.js
-
+model/
 # testing
 /coverage
 
@@ -22,3 +22,4 @@ app/yarn-error.log*
 
 env/
 model/dataset/
+node_modules
