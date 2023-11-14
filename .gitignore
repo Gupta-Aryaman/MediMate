@@ -5,9 +5,9 @@ app/.pnp.js
 
 # testing
 /coverage
-
 # production
 /build
+.DS_Store/
 
 # misc
 app/.DS_Store
