@@ -2,12 +2,12 @@
 app/node_modules
 app/.pnp
 app/.pnp.js
-
+node_modules/
 # testing
 /coverage
 # production
 /build
-.DS_Store/
+.DS_Store
 
 # misc
 app/.DS_Store
