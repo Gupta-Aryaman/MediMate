@@ -59,11 +59,11 @@ const Sidebar = () => {
                     <div className="relative h-8 w-8 mr-1">
                         <Image
                             fill
-                            src="/logo.png"
+                            src="/logo-white.png"
                             alt="Logo" />
                     </div>
-                    <h1 className={cn("text-2xl font-bold", montserrat.className)}>
-                        MyDoctor
+                    <h1 className={cn("text-2xl font-bold ml-3", montserrat.className)}>
+                        MedGPT
                     </h1>
                 </Link>
                 <div className="space-y-1">
