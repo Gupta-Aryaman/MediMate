@@ -31,8 +31,9 @@ export default function DashboardPage() {
     const [isloading, setIsLoading] = useState(false);
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // Prevent the form from submitting and refreshing the page
-    
+        event.preventDefault();
+        setChatLog((prevChatLog) => [...prevChatLog, { type: "user", message: inputValue }]);
+        setInputValue('');
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
@@ -53,7 +54,7 @@ export default function DashboardPage() {
                 }
             })
             .catch(error => console.log('error', error));
-    };
+    }
 
     const sendMessage =  (message) => {
         const url = ""
