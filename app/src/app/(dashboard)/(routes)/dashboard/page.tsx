@@ -34,6 +34,30 @@ export default function DashboardPage() {
         event.preventDefault();
         setChatLog((prevChatLog) => [...prevChatLog, { type: "user", message: inputValue }]);
         setInputValue('');
+        
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+          };
+          
+          fetch(`http://127.0.0.1:5000/chat?query=${inputValue}`, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
+        for(var i = 0; i < 10; i++){
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+              };
+              
+              fetch("http://127.0.0.1:5000/awake", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+            // setTimeout();
+        }
+        
     }
 
     const sendMessage =  (message) => {
