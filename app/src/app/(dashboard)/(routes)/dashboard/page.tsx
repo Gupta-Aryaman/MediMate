@@ -31,10 +31,29 @@ export default function DashboardPage() {
     const [isloading, setIsLoading] = useState(false);
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        setChatLog((prevChatLog) => [...prevChatLog, { type: "user", message: inputValue }]);
-        setInputValue('');
-    }
+        event.preventDefault(); // Prevent the form from submitting and refreshing the page
+    
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+          
+        fetch(`http://127.0.0.1:5000/chat?query=${inputValue}`, requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                if ("response" in result) {
+                    const botResponse = result.response; // getting the response from the bot
+                    
+                    // updating the chat response
+                    setChatLog(prevChatLog => [...prevChatLog, { type: 'bot', message: botResponse }]);
+                    setInputValue('');
+    
+                } else {
+                    console.log("Answer not found. Apologies!");
+                }
+            })
+            .catch(error => console.log('error', error));
+    };
 
     const sendMessage =  (message) => {
         const url = ""
