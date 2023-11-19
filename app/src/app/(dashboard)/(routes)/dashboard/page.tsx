@@ -111,7 +111,7 @@ export default function DashboardPage() {
                 <div className="flex-grow p-6 overflow-y-auto">
                     {chatLog.map((message, index) => (
                         <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                        <div className={`${message.type === 'user' ? 'bg-purple-500' : 'bg-gray-800'} rounded-mlg p-4 text-white max-w-sm rounded-lg`} style={{ wordWrap: 'break-word' }}>
+                        <div className={`${message.type === 'user' ? 'bg-purple-500' : 'bg-gray-800'} rounded-mlg p-4 text-white max-w-sm rounded-lg`} style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}>
                         {message.message}
                         </div>
                         </div>
