@@ -33,8 +33,7 @@ export default function DashboardPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
         setChatLog((prevChatLog) => [...prevChatLog, { type: "user", message: inputValue }]);
-        // setInputValue('');
-        
+        setInputValue('');
     }
 
     const sendMessage =  (message) => {
