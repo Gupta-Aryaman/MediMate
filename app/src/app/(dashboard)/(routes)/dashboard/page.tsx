@@ -7,22 +7,22 @@ import { cn } from "@/lib/utils";
 import { axios } from "axios";
 import TypingAnimation from "@/components/TypingAnimation";
 
-const tools = [
-    {
-        label: 'Account',
-        icon: MessageSquare,
-        color: 'text-blue-500',
-        bgColor: 'bg-violet-500/10',
-        href: '/dashboard'
-    },
-    {
-        label: 'Account',
-        icon: MessageSquare,
-        color: 'text-blue-500',
-        bgColor: 'bg-violet-500/10',
-        href: '/dashboard'
-    },
-]
+// const tools = [
+//     {
+//         label: 'Account',
+//         icon: MessageSquare,
+//         color: 'text-blue-500',
+//         bgColor: 'bg-violet-500/10',
+//         href: '/dashboard'
+//     },
+//     {
+//         label: 'Account',
+//         icon: MessageSquare,
+//         color: 'text-blue-500',
+//         bgColor: 'bg-violet-500/10',
+//         href: '/dashboard'
+//     },
+// ]
 
 
 export default function DashboardPage() {
@@ -33,7 +33,8 @@ export default function DashboardPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
         setChatLog((prevChatLog) => [...prevChatLog, { type: "user", message: inputValue }]);
-        setInputValue('');
+        // setInputValue('');
+        
     }
 
     const sendMessage =  (message) => {
@@ -60,13 +61,13 @@ export default function DashboardPage() {
     }
     return (
         <div>
-            <div className="mb-8 space-y-4">
+            <div className="mb-8 space-y-3">
                 <h2 className="text-4xl md:text-4xl font-bold text-center">
                     Dashboard
                 </h2>
                 <p className="text-muted-foreground font-light text-sm md:text-lg text-center">Manage your account</p>
             </div>
-            <div className="px-4 md:px-20 lg:px-20 space-y-4">
+            {/* <div className="px-4 md:px-20 lg:px-20 space-y-4">
                 {tools.map((tool) => (
                     <Card 
                     key={tool.href}
@@ -82,38 +83,34 @@ export default function DashboardPage() {
                         <ArrowRight className="w-5 h-5" />
                     </Card>
                 ))}
-            </div>
-            <div className="container mx-auto max-w-[700px] py-10">
-            <div className="flex flex-col h-screen bg-gray-900 border border-gray-700 rounded-lg">
-                <h1 className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg px-3 text-3xl text-white">
+            </div> */}
+            <div className="container mx-auto max-w-[700px] py-7">
+                <div className="flex flex-col h-screen bg-gray-900 border border-gray-700 rounded-lg">
+                    <h1 className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg px-3 text-3xl text-white">
                     Ask Your Questions
-                </h1>
-                <div className="flex-grow p-6">
-                    <div className="flex flex-col h-full overflow-y-auto">
-                        {chatLog.map((message, index) => (
-                            <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                <div className={`${message.type === 'user' ? 'bg-purple-500' : 'bg-gray-800'} rounded-mlg p-4 text-white max-w-sm rounded-lg`}>
-                                    {message.message}
-                                </div>
-                            </div>
-                        ))}
-                        {
-                            isloading && (
-                                <div key={chatLog.length} className="flex justify-start">
-                                    <div className="bg-gray-800 rounded-lg p-4 text-white max-w-sm rounded-lg">
-                                        <TypingAnimation />
-                                    </div>
-                                </div>
-                            )   
-                        }
-                    </div>
-                    <form onSubmit={handleSubmit} className="flex-none p-6">
-                        <div className="flex rounded-lg border border-gray-700 bg-gray-700 ">
-                            <input type="text" placeholder="Type Your message" onChange={(e) => setInputValue(e.target.value)} className="flex-grow px-4 py-2 bg-transparent text-white focus:outline-none" />
-                            <button type="submit" className="bg-purple-500 rounded-lg px-4 py=2 text-white font-semibold focus:outline-none hover:bg-purple-600 transition-colors duration-300">Send</button>
+                    </h1>
+                <div className="flex-grow p-6 overflow-y-auto">
+                    {chatLog.map((message, index) => (
+                        <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
+                        <div className={`${message.type === 'user' ? 'bg-purple-500' : 'bg-gray-800'} rounded-mlg p-4 text-white max-w-sm rounded-lg`} style={{ wordWrap: 'break-word' }}>
+                        {message.message}
                         </div>
-                    </form>
+                        </div>
+                        ))}
+                    {isloading && (
+                        <div key={chatLog.length} className="flex justify-start">
+                            <div className="bg-gray-800 rounded-lg p-4 text-white max-w-sm rounded-lg">
+                            Typing...
+                            </div>
+                        </div>
+                            )}
                 </div>
+                <form onSubmit={handleSubmit} className="flex-none p-6">
+                    <div className="flex rounded-lg border border-gray-700 bg-gray-700">
+                    <input type="text" placeholder="Type Your message" onChange={(e) => setInputValue(e.target.value)} className="flex-grow px-4 py-2 bg-transparent text-white focus:outline-none" />
+                    <button type="submit" className="bg-purple-500 rounded-lg px-4 py=2 text-white font-semibold focus:outline-none hover:bg-purple-600 transition-colors duration-300">Send</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

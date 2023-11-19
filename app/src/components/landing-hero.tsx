@@ -26,7 +26,7 @@ export const LandingHero = () => {
             <div className="flex justify-center">
                 <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
                     <Button className="rounded-full bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 md:text-lg p-4 md:p-6 font-semibold">
-                        Get Your Diagnosis Now
+                    {isSignedIn ? "Go to Dashboard" : "Get Your Diagnosis Now"}
                     </Button>
                 </Link>
             </div>
