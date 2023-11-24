@@ -32,21 +32,28 @@ export default function DashboardPage() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+    
+        // Check if inputValue is empty
+        if (!inputValue.trim()) {
+            return;
+        }
+    
         setChatLog((prevChatLog) => [...prevChatLog, { type: "user", message: inputValue }]);
         setInputValue('');
+    
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
         };
-          
+    
         fetch(`http://127.0.0.1:5000/chat?query=${inputValue}`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 if ("response" in result) {
                     const botResponse = result.response; // getting the response from the bot
-                    
+                    const formattedResponse = botResponse.replace(/\n/g, '<br>');
                     // updating the chat response
-                    setChatLog(prevChatLog => [...prevChatLog, { type: 'bot', message: botResponse }]);
+                    setChatLog(prevChatLog => [...prevChatLog, { type: 'bot', message: formattedResponse }]);
                     setInputValue('');
     
                 } else {
@@ -54,7 +61,18 @@ export default function DashboardPage() {
                 }
             })
             .catch(error => console.log('error', error));
-    }
+    };
+
+    const handleClearHistory = () => {
+        // Send a request to clear the chatbot's memory
+        fetch("http://127.0.0.1:5000/clear_memory", { method: 'POST' })
+            .then(response => response.json())
+            .then(result => {
+                console.log("Memory cleared:", result);
+                // Optionally, update your UI or take other actions
+            })
+            .catch(error => console.error('Error clearing memory:', error));
+    };
 
     const sendMessage =  (message) => {
         const url = ""
@@ -77,14 +95,16 @@ export default function DashboardPage() {
             console.log(error);
             setIsLoading(false);
         });
+
+
     }
     return (
         <div>
-            <div className="mb-8 space-y-3">
-                <h2 className="text-4xl md:text-4xl font-bold text-center">
+            <div >
+                {/* <h2 className="text-4xl md:text-4xl font-bold text-center">
                     Dashboard
-                </h2>
-                <p className="text-muted-foreground font-light text-sm md:text-lg text-center">Manage your account</p>
+                </h2> */}
+                {/* <p className="text-muted-foreground font-light text-sm md:text-lg text-center">Manage your account</p> */}
             </div>
             {/* <div className="px-4 md:px-20 lg:px-20 space-y-4">
                 {tools.map((tool) => (
@@ -103,19 +123,21 @@ export default function DashboardPage() {
                     </Card>
                 ))}
             </div> */}
-            <div className="container mx-auto max-w-[700px] py-7">
-                <div className="flex flex-col h-screen bg-gray-900 border border-gray-700 rounded-lg">
+            <div className="container mx-auto max-w-[1000px] py-7" >
+                <div className="flex flex-col h-screen bg-gray-900 border border-gray-700 rounded-lg" style={{ maxHeight: '600px' }}>
                     <h1 className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg px-3 text-3xl text-white">
                     Ask Your Questions
                     </h1>
-                <div className="flex-grow p-6 overflow-y-auto">
+                <div className="flex-grow p-6 overflow-y-auto" style={{ maxHeight: '450px' }}>
                     {chatLog.map((message, index) => (
-                        <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                        <div className={`${message.type === 'user' ? 'bg-purple-500' : 'bg-gray-800'} rounded-mlg p-4 text-white max-w-sm rounded-lg`} style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}>
-                        {message.message}
+                    <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
+                        <div
+                            className={`${message.type === 'user' ? 'bg-purple-500' : 'bg-gray-800'} rounded-mlg p-4 text-white max-w-sm rounded-lg`}
+                            style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}
+                            dangerouslySetInnerHTML={{ __html: message.message }}
+                            />
                         </div>
-                        </div>
-                        ))}
+                    ))}
                     {isloading && (
                         <div key={chatLog.length} className="flex justify-start">
                             <div className="bg-gray-800 rounded-lg p-4 text-white max-w-sm rounded-lg">
@@ -130,6 +152,9 @@ export default function DashboardPage() {
                     <button type="submit" className="bg-purple-500 rounded-lg px-4 py=2 text-white font-semibold focus:outline-none hover:bg-purple-600 transition-colors duration-300">Send</button>
                     </div>
                 </form>
+                <button onClick={handleClearHistory} className="bg-red-500 text-white px-4 py-2 rounded-md mt-4">
+                Clear History
+            </button>
             </div>
         </div>
     </div>
