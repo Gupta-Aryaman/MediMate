@@ -9,6 +9,7 @@ body,
   height: 100%;
 }
 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -80,4 +81,57 @@ body,
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+/* styles.css or your preferred stylesheet */
+.pastChatContainer {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.chatTitle {
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.chatText {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.chatList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chatListItem {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.userInput {
+  margin: 5px 0;
+  color: #333;
+}
+
+.botResponse {
+  margin: 5px 0;
+  color: #333;
+}
+
+.timestamp {
+  margin: 5px 0;
+  color: #333;
 }
