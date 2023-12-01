@@ -19,35 +19,35 @@ const routes = [
         href: "/dashboard",
         color: "text-sky-500"
     },
-    {
-        label: "ScanPlus",
-        icon: MessageSquare,
-        href: "/a",
-        color: "text-violet-500"
-    },
+    // {
+    //     label: "ScanPlus",
+    //     icon: MessageSquare,
+    //     href: "/a",
+    //     color: "text-violet-500"
+    // },
     {
         label: "Past Diagnosis",
         icon: ImageIcon,
-        href: "/b",
+        href: "/past-diagnosis",
         color: "text-orange-500"
     },
-    {
-        label: "Want",
-        icon: VideoIcon,
-        href: "/c",
-        color: "text-pink-500"
-    },
-    {
-        label: "You Got it?",
-        icon: Music2Icon,
-        href: "/d",
-        color: "text-cyan-500"
-    },
-    {
-        label: "Settings",
-        icon: SettingsIcon,
-        href: "/e",
-    },
+    // {
+    //     label: "Want",
+    //     icon: VideoIcon,
+    //     href: "/c",
+    //     color: "text-pink-500"
+    // },
+    // {
+    //     label: "You Got it?",
+    //     icon: Music2Icon,
+    //     href: "/d",
+    //     color: "text-cyan-500"
+    // },
+    // {
+    //     label: "Settings",
+    //     icon: SettingsIcon,
+    //     href: "/e",
+    // },
 ];
 
 const Sidebar = () => {
