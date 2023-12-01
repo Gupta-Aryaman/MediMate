@@ -24,7 +24,7 @@ export const LandingNavbar = () => {
                         src="/logo.png"
                         alt="logo" />
                 </div>
-                <h1 className={cn("text-2xl font-bold text-black font", font.className)}>MedGPT</h1>
+                <h1 className={cn("text-2xl font-bold text-black font", font.className)}>MediMate</h1>
             </Link>
             <div className="flex items-center gap-x-2">
                 <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>

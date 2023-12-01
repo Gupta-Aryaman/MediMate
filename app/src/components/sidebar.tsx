@@ -63,7 +63,7 @@ const Sidebar = () => {
                             alt="Logo" />
                     </div>
                     <h1 className={cn("text-2xl font-bold ml-3", montserrat.className)}>
-                        MedGPT
+                        MediMate
                     </h1>
                 </Link>
                 <div className="space-y-1">
