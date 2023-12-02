@@ -1,0 +1,9 @@
+torch
+langchain
+numpy
+transformers
+InstructorEmbedding
+sentence_transformers
+llama-cpp-python
+faiss-gpu
+flask

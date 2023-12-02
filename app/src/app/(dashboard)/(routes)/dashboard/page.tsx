@@ -58,14 +58,14 @@ export default function DashboardPage() {
         
         setChatLog((prevChatLog) => [...prevChatLog, { type: "user", message: inputValue }]);
         setInputValue('');
-        // var requestOptions = {
-        //     method: 'GET',
-        //     redirect: 'follow'
-        // };
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
     
-        // fetch(`http://127.0.0.1:5000/chat?query=${inputValue}`, requestOptions)
-        //     .then(response => response.json())
-        mockChatbotAPI(inputValue)
+        fetch(`http://127.0.0.1:5000/chat?query=${inputValue}`, requestOptions)
+            .then(response => response.json())
+        // mockChatbotAPI(inputValue)
             .then(result => {
                 if ("response" in result) {
                     const botResponse = result.response; // getting the response from the bot
