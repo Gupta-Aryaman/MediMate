@@ -122,4 +122,4 @@ Database used - Faiss (constant)
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](https://github.com/Gupta-Aryaman/MediMate/blob/main/LICENSE).
