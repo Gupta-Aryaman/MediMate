@@ -98,10 +98,27 @@ Follow these steps to set up MediMate on your local machine:
   ```
 > ### We ran the Llama-2 LLM on AWS sagemaker. To access the model on local machine we used a Bastion server. You can find more details on how to implement this approach [here](https://ruslanmv.com/blog/How-to-connect-to-Sagemaker-Notebook-via-SSH)
 
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+## Testing
+At the end, 2 machines were created and the results were compared for a set of questions (19) (read about it in more detail [here](https://github.com/Gupta-Aryaman/MediMate/tree/main/reports)) -  
+- BLUE - (Ref- https://huggingface.co/hkunlp/instructor-large )
+```
+GPU Memory - 16gb
+GPU 0- Tesla T4
+23 Prompts
+Embeddings used - hkunlp/instructor-large (variating here)
+Model used - Llama 2 13B, 128 group size model - GPTQ
+Database used - Faiss (constant)
+```
+- ORANGE-  (Ref- https://huggingface.co/hkunlp/instructor-xl )
+```
+CPU Memory - 192gb
+CPU- Intel Xeon Platinum 8275CL (Cascade Lake)
+23 Prompts
+Embeddings used - hkunlp/instructor-xl (variating here)
+Model used - Llama 2 13B, 128 group size model-GGUF
+Database used - Faiss (constant)
+```
+![image](https://github.com/user-attachments/assets/e826e5bf-0ba3-462c-a2de-0f2659ec582c)
 
 ## License
 
